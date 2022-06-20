@@ -1,0 +1,11 @@
+For each class, the specific number of photos are as shown:
+420 no mask images.         Sources: [1], [3]
+402 cloth mask images.         Sources: [1], [2], [3]
+400 surgical mask images.     Sources: [1], [2], [3]
+410 N95 mask images.         Sources: [1], [2], [3] [4]
+This amount totals to 1632 photos of individuals.
+
+[1]	A. Jangra, “Face mask detection ~12K images dataset,” Kaggle, 26-May-2020. [Online]. Available: https://www.kaggle.com/datasets/ashishjangra27/face-mask-12k-images-dataset. [Accessed: 04-Jun-2022].
+[2]	D. Makwana, “Face mask classification,” Kaggle, 25-Jul-2020. [Online]. Available: https://www.kaggle.com/datasets/dhruvmak/face-mask-detection. [Accessed: 04-Jun-2022].
+[3]	W. Intelligence, “Face mask detection dataset,” Kaggle, 14-Jun-2020. [Online]. Available: https://www.kaggle.com/datasets/wobotintelligence/face-mask-detection-dataset. [Accessed: 07-Jun-2022]. 
+[4]	coffee124, “N95 face mask,” Kaggle, 05-Jun-2022. [Online]. Available: https://www.kaggle.com/datasets/coffee124/facemaskn95. [Accessed: 07-Jun-2022]. 
