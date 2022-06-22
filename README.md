@@ -21,7 +21,7 @@ Part 2: https://drive.google.com/file/d/16sPB5_CYc3kLfUfO_001vAhASq3fKzpb/view
 ```
 
 When you run 'main.py', initially, the code will ask you if you would want to train the base model.
-- If ‘yes’ is entered, the code will start training the base model and will then save it as “Demo_model” when the validation accuracy is at least 60%. If it does not, it will return the variable “history” which holds the validation accuracy and loss for the evaluation.  
+- If ‘yes’ is entered, the code will start training the base model and will then save it as “Demo_model” when the validation accuracy converges. If it does not, it will return the variable “history” which holds the validation accuracy and loss for the evaluation.  
 - If ‘no’ is entered, the code will predict the labels in our sample folder using the trained model called “finalized_model” and print the actual and predicted labels.
 
 Currently, we specified a manual_seed(42) in line 2 of main.py. This is to make sure that we get the same split for Training Set and Test Set in dataset for every run. To split the dataset into random Training Set and Test Set, please comment out the code in line 2 of main.py
