@@ -40,7 +40,7 @@ To study the bias of the AI, we have split our dataset into two groups. For gend
 root
 │   README.md				readme file
 |   main.py					python file that has all the code of the project
-|   NS07_COMP472_Report.pdf   	Project Part 1 Report
+|   NS07_COMP472_Report.pdf   	Project Report
 |   NS_07_COMP472_Expectations-of-Originality.pdf
 │
 └───dataset               		complete dataset
