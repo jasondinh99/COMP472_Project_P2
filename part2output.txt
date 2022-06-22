@@ -1,0 +1,222 @@
+do you want to train the base modelyes
+Follwing classes are there : 
+ ['cloth_female', 'cloth_male', 'n95_female', 'n95_male', 'no_female', 'no_male', 'surgical_female', 'surgical_male']
+Length of Train+validation Data : 1230
+Length of test Data : 400
+Fold Number: 1
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.1037, val_loss: 2.0784, val_acc: 0.1220
+Epoch [1], train_loss: 2.0710, val_loss: 2.0700, val_acc: 0.1220
+Fold Number: 2
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0897, val_loss: 2.0392, val_acc: 0.1870
+Epoch [1], train_loss: 2.0717, val_loss: 2.0687, val_acc: 0.1870
+Fold Number: 3
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0898, val_loss: 2.1879, val_acc: 0.1707
+Epoch [1], train_loss: 2.0713, val_loss: 2.0777, val_acc: 0.1382
+Epoch [2], train_loss: 2.0662, val_loss: 2.0739, val_acc: 0.1057
+Epoch [3], train_loss: 2.0363, val_loss: 1.9973, val_acc: 0.2602
+Epoch [4], train_loss: 1.8910, val_loss: 1.8490, val_acc: 0.2927
+Epoch [5], train_loss: 1.7597, val_loss: 1.7558, val_acc: 0.2927
+Fold Number: 4
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0821, val_loss: 2.0592, val_acc: 0.1463
+Epoch [1], train_loss: 2.0793, val_loss: 2.0695, val_acc: 0.1707
+Epoch [2], train_loss: 2.0736, val_loss: 2.0579, val_acc: 0.1463
+Epoch [3], train_loss: 2.0676, val_loss: 2.0586, val_acc: 0.1463
+Fold Number: 5
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0765, val_loss: 2.0692, val_acc: 0.1463
+Epoch [1], train_loss: 2.0787, val_loss: 2.0693, val_acc: 0.2114
+Epoch [2], train_loss: 2.0702, val_loss: 2.0580, val_acc: 0.1463
+Epoch [3], train_loss: 2.0661, val_loss: 2.0658, val_acc: 0.1463
+Fold Number: 6
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.1044, val_loss: 2.0704, val_acc: 0.1138
+Epoch [1], train_loss: 2.0668, val_loss: 2.0751, val_acc: 0.1138
+Fold Number: 7
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0785, val_loss: 2.0885, val_acc: 0.0813
+Epoch [1], train_loss: 2.0686, val_loss: 2.0798, val_acc: 0.1951
+Epoch [2], train_loss: 2.0582, val_loss: 2.0664, val_acc: 0.2358
+Epoch [3], train_loss: 1.9288, val_loss: 1.8687, val_acc: 0.2764
+Epoch [4], train_loss: 1.7958, val_loss: 1.8816, val_acc: 0.2195
+Epoch [5], train_loss: 1.7116, val_loss: 1.8586, val_acc: 0.2602
+Epoch [6], train_loss: 1.6474, val_loss: 1.8647, val_acc: 0.2602
+Fold Number: 8
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0792, val_loss: 2.0749, val_acc: 0.1138
+Epoch [1], train_loss: 1.9956, val_loss: 1.8231, val_acc: 0.2846
+Epoch [2], train_loss: 1.7780, val_loss: 1.8223, val_acc: 0.3171
+Epoch [3], train_loss: 1.6670, val_loss: 1.6466, val_acc: 0.3577
+Epoch [4], train_loss: 1.5846, val_loss: 1.7175, val_acc: 0.3008
+Epoch [5], train_loss: 1.5417, val_loss: 1.5545, val_acc: 0.3821
+Epoch [6], train_loss: 1.4403, val_loss: 1.7217, val_acc: 0.3496
+Epoch [7], train_loss: 1.3926, val_loss: 1.5297, val_acc: 0.3984
+Epoch [8], train_loss: 1.2512, val_loss: 1.5184, val_acc: 0.4146
+Epoch [9], train_loss: 1.1128, val_loss: 1.7402, val_acc: 0.4146
+Fold Number: 9
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0777, val_loss: 2.0807, val_acc: 0.0976
+Epoch [1], train_loss: 2.0687, val_loss: 2.1150, val_acc: 0.1301
+Epoch [2], train_loss: 2.0672, val_loss: 2.0762, val_acc: 0.1382
+Epoch [3], train_loss: 2.0666, val_loss: 2.0800, val_acc: 0.1301
+Epoch [4], train_loss: 2.0651, val_loss: 2.0750, val_acc: 0.1301
+Fold Number: 10
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0951, val_loss: 2.0655, val_acc: 0.2195
+Epoch [1], train_loss: 2.0612, val_loss: 2.0616, val_acc: 0.1138
+Epoch [2], train_loss: 1.9467, val_loss: 1.8735, val_acc: 0.2358
+Epoch [3], train_loss: 1.7757, val_loss: 1.8516, val_acc: 0.2520
+Epoch [4], train_loss: 1.7525, val_loss: 1.8157, val_acc: 0.2927
+Epoch [5], train_loss: 1.6998, val_loss: 1.7945, val_acc: 0.2520
+Epoch [6], train_loss: 1.6273, val_loss: 1.7184, val_acc: 0.3171
+Epoch [7], train_loss: 1.6171, val_loss: 1.7397, val_acc: 0.3415
+Epoch [8], train_loss: 1.5697, val_loss: 1.6157, val_acc: 0.3252
+Epoch [9], train_loss: 1.4795, val_loss: 1.6149, val_acc: 0.3902
+desired accuracy wasnt obtained so return model after latest epoch 
+
+
+new output
+
+Fold Number: 1
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0922, val_loss: 2.0559, val_acc: 0.1707
+Epoch [1], train_loss: 2.0703, val_loss: 2.0555, val_acc: 0.1463
+Epoch [2], train_loss: 2.0371, val_loss: 1.9176, val_acc: 0.2195
+Epoch [3], train_loss: 1.9402, val_loss: 1.8141, val_acc: 0.2846
+Epoch [4], train_loss: 1.7745, val_loss: 1.7684, val_acc: 0.3008
+Epoch [5], train_loss: 1.7245, val_loss: 1.7954, val_acc: 0.2764
+Epoch [6], train_loss: 1.6630, val_loss: 1.6975, val_acc: 0.3577
+Epoch [7], train_loss: 1.6075, val_loss: 1.7339, val_acc: 0.2846
+Epoch [8], train_loss: 1.5283, val_loss: 1.7137, val_acc: 0.3577
+Epoch [9], train_loss: 1.4666, val_loss: 1.6834, val_acc: 0.2927
+Fold Number: 2
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0867, val_loss: 2.0676, val_acc: 0.1545
+Epoch [1], train_loss: 2.0628, val_loss: 2.0720, val_acc: 0.1301
+Epoch [2], train_loss: 1.9537, val_loss: 2.0914, val_acc: 0.2114
+Epoch [3], train_loss: 2.0095, val_loss: 1.8824, val_acc: 0.2439
+Epoch [4], train_loss: 1.8216, val_loss: 1.8042, val_acc: 0.2358
+Epoch [5], train_loss: 1.7177, val_loss: 1.7712, val_acc: 0.2439
+Epoch [6], train_loss: 1.6722, val_loss: 1.8077, val_acc: 0.2927
+Epoch [7], train_loss: 1.6227, val_loss: 1.7531, val_acc: 0.2520
+Epoch [8], train_loss: 1.5934, val_loss: 1.7756, val_acc: 0.2683
+Epoch [9], train_loss: 1.5653, val_loss: 1.7766, val_acc: 0.2602
+Fold Number: 3
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0883, val_loss: 2.0838, val_acc: 0.0894
+Epoch [1], train_loss: 2.0666, val_loss: 2.0829, val_acc: 0.0894
+Epoch [2], train_loss: 2.0643, val_loss: 2.0765, val_acc: 0.0976
+Epoch [3], train_loss: 2.0296, val_loss: 1.9672, val_acc: 0.1789
+Epoch [4], train_loss: 1.9085, val_loss: 1.8127, val_acc: 0.3008
+Epoch [5], train_loss: 1.7387, val_loss: 1.7682, val_acc: 0.2276
+Epoch [6], train_loss: 1.6534, val_loss: 1.6758, val_acc: 0.3577
+Epoch [7], train_loss: 1.6030, val_loss: 1.6993, val_acc: 0.3008
+Epoch [8], train_loss: 1.5424, val_loss: 1.7437, val_acc: 0.2846
+Epoch [9], train_loss: 1.5024, val_loss: 1.6632, val_acc: 0.2927
+Fold Number: 4
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0888, val_loss: 2.0667, val_acc: 0.1301
+Epoch [1], train_loss: 2.0654, val_loss: 2.0618, val_acc: 0.1626
+Epoch [2], train_loss: 2.0434, val_loss: 1.9869, val_acc: 0.1951
+Epoch [3], train_loss: 1.9297, val_loss: 2.1113, val_acc: 0.2114
+Epoch [4], train_loss: 1.8548, val_loss: 1.9404, val_acc: 0.2195
+Epoch [5], train_loss: 1.7431, val_loss: 1.8032, val_acc: 0.2846
+Epoch [6], train_loss: 1.6575, val_loss: 1.7025, val_acc: 0.3252
+Epoch [7], train_loss: 1.5366, val_loss: 1.7301, val_acc: 0.3252
+Epoch [8], train_loss: 1.4457, val_loss: 1.7235, val_acc: 0.3659
+Epoch [9], train_loss: 1.3628, val_loss: 1.6098, val_acc: 0.4228
+Fold Number: 5
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0875, val_loss: 2.0710, val_acc: 0.1463
+Epoch [1], train_loss: 2.0816, val_loss: 2.0755, val_acc: 0.0894
+Epoch [2], train_loss: 2.0759, val_loss: 2.0693, val_acc: 0.1870
+Epoch [3], train_loss: 2.0735, val_loss: 2.0595, val_acc: 0.1870
+Epoch [4], train_loss: 2.0709, val_loss: 2.0474, val_acc: 0.1870
+Epoch [5], train_loss: 2.0699, val_loss: 2.0360, val_acc: 0.1789
+Epoch [6], train_loss: 2.0672, val_loss: 2.0338, val_acc: 0.1870
+Epoch [7], train_loss: 2.0667, val_loss: 2.0382, val_acc: 0.1870
+Epoch [8], train_loss: 2.0664, val_loss: 2.0378, val_acc: 0.1870
+Epoch [9], train_loss: 2.0670, val_loss: 2.0362, val_acc: 0.1870
+Fold Number: 6
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0832, val_loss: 2.0743, val_acc: 0.1626
+Epoch [1], train_loss: 2.0647, val_loss: 2.0773, val_acc: 0.1301
+Epoch [2], train_loss: 2.0394, val_loss: 1.9811, val_acc: 0.1789
+Epoch [3], train_loss: 1.9078, val_loss: 1.7582, val_acc: 0.2439
+Epoch [4], train_loss: 1.8058, val_loss: 1.7713, val_acc: 0.2683
+Epoch [5], train_loss: 1.7323, val_loss: 1.7264, val_acc: 0.2276
+Epoch [6], train_loss: 1.6884, val_loss: 1.6795, val_acc: 0.2927
+Epoch [7], train_loss: 1.6422, val_loss: 1.6584, val_acc: 0.3089
+Epoch [8], train_loss: 1.6187, val_loss: 1.6020, val_acc: 0.3659
+Epoch [9], train_loss: 1.5636, val_loss: 1.6112, val_acc: 0.3902
+Fold Number: 7
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0835, val_loss: 2.0655, val_acc: 0.1707
+Epoch [1], train_loss: 2.0705, val_loss: 2.0704, val_acc: 0.1626
+Epoch [2], train_loss: 2.0669, val_loss: 2.0671, val_acc: 0.1707
+Epoch [3], train_loss: 2.0661, val_loss: 2.0640, val_acc: 0.1707
+Epoch [4], train_loss: 2.0646, val_loss: 2.0645, val_acc: 0.1707
+Epoch [5], train_loss: 2.0601, val_loss: 2.0505, val_acc: 0.1301
+Epoch [6], train_loss: 2.0064, val_loss: 1.9830, val_acc: 0.1870
+Epoch [7], train_loss: 1.8555, val_loss: 1.9110, val_acc: 0.1870
+Epoch [8], train_loss: 1.7902, val_loss: 1.8039, val_acc: 0.2683
+Epoch [9], train_loss: 1.7196, val_loss: 1.7525, val_acc: 0.3333
+Fold Number: 8
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0928, val_loss: 2.0773, val_acc: 0.1463
+Epoch [1], train_loss: 2.0682, val_loss: 2.0672, val_acc: 0.1382
+Epoch [2], train_loss: 2.0542, val_loss: 2.0295, val_acc: 0.2033
+Epoch [3], train_loss: 1.9279, val_loss: 2.0865, val_acc: 0.1707
+Epoch [4], train_loss: 1.8446, val_loss: 1.7336, val_acc: 0.3089
+Epoch [5], train_loss: 1.7011, val_loss: 1.6890, val_acc: 0.2602
+Epoch [6], train_loss: 1.6448, val_loss: 1.6411, val_acc: 0.2927
+Epoch [7], train_loss: 1.5500, val_loss: 1.6887, val_acc: 0.3171
+Epoch [8], train_loss: 1.5729, val_loss: 1.6407, val_acc: 0.2927
+Epoch [9], train_loss: 1.4726, val_loss: 1.6586, val_acc: 0.3008
+Fold Number: 9
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0825, val_loss: 2.0553, val_acc: 0.1463
+Epoch [1], train_loss: 2.0357, val_loss: 1.9607, val_acc: 0.3008
+Epoch [2], train_loss: 1.9722, val_loss: 1.8899, val_acc: 0.2520
+Epoch [3], train_loss: 1.8058, val_loss: 1.7840, val_acc: 0.2602
+Epoch [4], train_loss: 1.7386, val_loss: 1.8253, val_acc: 0.2439
+Epoch [5], train_loss: 1.6471, val_loss: 1.7006, val_acc: 0.2927
+Epoch [6], train_loss: 1.5696, val_loss: 1.7605, val_acc: 0.2195
+Epoch [7], train_loss: 1.5300, val_loss: 1.6954, val_acc: 0.3089
+Epoch [8], train_loss: 1.4367, val_loss: 1.8063, val_acc: 0.3333
+Epoch [9], train_loss: 1.3491, val_loss: 1.6940, val_acc: 0.3333
+Fold Number: 10
+Length of Train Data : 1107
+Length of Validation Data : 123
+Epoch [0], train_loss: 2.0859, val_loss: 2.0816, val_acc: 0.1220
+Epoch [1], train_loss: 2.0721, val_loss: 2.0692, val_acc: 0.1870
+Epoch [2], train_loss: 2.0433, val_loss: 1.9379, val_acc: 0.2602
+Epoch [3], train_loss: 1.9572, val_loss: 1.7976, val_acc: 0.3415
+Epoch [4], train_loss: 1.8293, val_loss: 1.6779, val_acc: 0.3902
+Epoch [5], train_loss: 1.7556, val_loss: 1.6592, val_acc: 0.3171
+Epoch [6], train_loss: 1.6519, val_loss: 1.6913, val_acc: 0.2683
+Epoch [7], train_loss: 1.6211, val_loss: 1.6138, val_acc: 0.3252
+Epoch [8], train_loss: 1.5014, val_loss: 1.6668, val_acc: 0.3984
+Epoch [9], train_loss: 1.4476, val_loss: 1.5926, val_acc: 0.3902

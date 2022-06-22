@@ -1,4 +1,5 @@
 import torch
+
 torch.manual_seed(42)
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
@@ -7,6 +8,11 @@ import torch.nn.functional as F
 from torch.utils.data.dataloader import DataLoader
 from torch.utils.data import random_split
 from sklearn.metrics import precision_score, recall_score, f1_score, confusion_matrix
+from sklearn.model_selection import KFold
+from torch.utils.data.dataset import Subset
+
+CUDA_LAUNCH_BLOCKING = 1
+
 
 # Base Model For Image Classification:
 class ImageClassificationBase(nn.Module):
@@ -15,7 +21,7 @@ class ImageClassificationBase(nn.Module):
         images, labels = batch
         out = self(images)  # Generate predictions
         loss = F.cross_entropy(out, labels)  # Calculate loss
-        return loss
+        return loss,
 
     def validation_step(self, batch):
         images, labels = batch
@@ -32,8 +38,8 @@ class ImageClassificationBase(nn.Module):
         return {'val_loss': epoch_loss.item(), 'val_acc': epoch_acc.item()}
 
     def epoch_end(self, epoch, result):
-        print("Epoch [{}], train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
-            epoch, result['train_loss'], result['val_loss'], result['val_acc']))
+        print("Epoch [{}],train_acc: {:.4f}, train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
+            epoch, result['train_acc'], result['train_loss'], result['val_loss'], result['val_acc']))
 
 
 # CNN Model For Classification:
@@ -65,7 +71,7 @@ class FaceMaskClassification(ImageClassificationBase):
             nn.ReLU(),
             nn.Linear(1024, 512),
             nn.ReLU(),
-            nn.Linear(512, 6)
+            nn.Linear(512, 8)
         )
 
     def forward(self, xb):
@@ -85,14 +91,17 @@ def evaluate(model, val_loader):
     outputs = [model.validation_step(batch) for batch in val_loader]
     return model.validation_epoch_end(outputs)
 
-#train the model and after every epoch save the model that gives us a validation accuracy >=60%
-def fit(epochs, lr, model, train_loader, val_loader, opt_func):
+
+# train the model and after every epoch save the model that gives us a validation accuracy >=60%
+def fit(epochs, lr, model, train_loader, val_loader, opt_func, fold_value):
     history = []
     optimizer = opt_func(model.parameters(), lr)
+    previous_valaccuracy = 0
     for epoch in range(epochs):
 
         model.train()
         train_losses = []
+        train_acc = []
         for batch in train_loader:
             loss = model.training_step(batch)
             train_losses.append(loss)
@@ -100,20 +109,27 @@ def fit(epochs, lr, model, train_loader, val_loader, opt_func):
             optimizer.step()
             optimizer.zero_grad()
 
+        # validation data evaluation
         result = evaluate(model, val_loader)
         result['train_loss'] = torch.stack(train_losses).mean().item()
+        result['train_acc'] = evaluate(model, train_loader)['val_acc']
         model.epoch_end(epoch, result)
         history.append(result)
-        if result['val_acc'] >= 0.60:
-            # To save a model:
-            torch.save(model.state_dict(),"./demo_model.sav")
-            return history
+        #         if abs(result['val_acc']-previous_valaccuracy)<0.001:
+        #             model_name = "Model_Number_" + str(fold_value)
+        #             return [model_name,model,result['val_acc']]
 
-    print("desired accuracy wasnt obtained ")
-    return history
+        if epoch == epochs - 1:
+            model_name = "Model_Number_" + str(fold_value)
+            return [model_name, model, result['val_acc']]
+        previous_valaccuracy = result['val_acc']
+
+    print("desired accuracy wasnt obtained so return model after latest epoch ")
+    model_name = "Model_Number_" + str(fold_value)
+    return [model_name, model, previous_valaccuracy]
 
 
-#used to print predicted labels and evaluation such as confusion matrix and f1-score
+# used to print predicted labels and evaluation such as confusion matrix and f1-score
 def test(model, test_dl):
     list_labels = []  # list of labels (actual class values of images)
     list_preds = []  # list of predictions (nn's guesses)
@@ -191,13 +207,13 @@ def test(model, test_dl):
         tn = len(list_labels) - fn - fp - tp
         print('\nCLASS #', str(c))
 
-        accuracy = (tp + tn)/ (tp + tn + fp + fn)
+        accuracy = (tp + tn) / (tp + tn + fp + fn)
         format_float = "{:.2f}".format(accuracy)
         print('Accuracy: ', format_float)
-        precision = tp / (tp+fp)
+        precision = tp / (tp + fp)
         format_float = "{:.2f}".format(precision)
         print('Precision: ', format_float)
-        recall = tp / (tp+fn)
+        recall = tp / (tp + fn)
         format_float = "{:.2f}".format(recall)
         print('Recall: ', format_float)
         f1_measure = 2 * (precision * recall) / (precision + recall)
@@ -215,82 +231,160 @@ def test(model, test_dl):
     score = f1_score(y_true, y_pred, average='micro')
     print('F1_score: ', score)
 
+
 if __name__ == "__main__":
     # train and test directory
-    data_dir = "./dataset"
-    #sample directory
-    sample_dir = "./sample-dataset"
+    data_dir = ".\dataset"
+    # sample directory
+    sample_dir = ".\sample-dataset"
 
-    request = input('Do you want to train the base model? (yes/no) : ')
+    #     request = input('do you want to train the base model')
 
-    if request == 'yes':
-        # Preparing the Dataset :
-        # To prepare a dataset from such a structure, PyTorch provides ImageFolder class which makes the task easy for us
-        # to prepare the dataset.
-        # We simply have to pass the directory of our data to it and it provides the dataset which we can use to train the model.
+    #     if request == 'yes':
+    # Preparing the Dataset :
+    # To prepare a dataset from such a structure, PyTorch provides ImageFolder class which makes the task easy for us
+    # to prepare the dataset.
+    # We simply have to pass the directory of our data to it and it provides the dataset which we can use to train the model.
 
-        # load the train and test data
-        # The torchvision.transforms module provides various functionality to preprocess the images,
-        # here first we resize the image for (150*150) shape and then transforms them into tensors.
-        dataset = ImageFolder(data_dir, transform=transforms.Compose([
-            transforms.Resize((150, 150)), transforms.ToTensor()
-        ]))
+    # load the train and test data
+    # The torchvision.transforms module provides various functionality to preprocess the images,
+    # here first we resize the image for (150*150) shape and then transforms them into tensors.
+    dataset = ImageFolder(data_dir, transform=transforms.Compose([
+        transforms.Resize((150, 150)), transforms.ToTensor()
+    ]))
 
-        # The image label set according to the class index in data.classes.
-        print("Follwing classes are there : \n", dataset.classes)
+    # The image label set according to the class index in data.classes.
+    print("Follwing classes are there : \n", dataset.classes)
 
-        # output:
-        # Follwing classes are there :
-        # ['cloth_mask', 'n95_mask', 'no_mask', 'surgical_mask']
+    # output:
+    # Follwing classes are there :
+    # ['cloth_mask', 'n95_mask', 'no_mask', 'surgical_mask']
 
-        # Splitting Data and Prepare Batches:
-        batch_size = 64
-        val_size = 246
-        test_size = 400
-        train_size = len(dataset) - test_size
+    # Splitting Data and Prepare Batches:
+    batch_size = 128
+    val_size = 246
+    test_size = 400
+    train_size = len(dataset) - test_size
 
-        train_data, test_data = random_split(dataset, [train_size, test_size])
-        print(f"Length of Train+validation Data : {len(train_data)}")
-        print(f"Length of test Data : {len(test_data)}")
+    train_data, test_data = random_split(dataset, [train_size, test_size])
+    print(f"Length of Train+validation Data : {len(train_data)}")
+    print(f"Length of test Data : {len(test_data)}")
 
-        train_data, val_data = random_split(train_data, [train_size - val_size, val_size])
-        print(f"Length of Train Data : {len(train_data)}")
-        print(f"Length of Validation Data : {len(val_data)}")
+    # load the test into batches.
+    test_dl = DataLoader(test_data, batch_size * 2, num_workers=4, pin_memory=True)
 
-        # load the train,validation, and test into batches.
-        train_dl = DataLoader(train_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
-        val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
-        test_dl = DataLoader(test_data, batch_size * 2, num_workers=4, pin_memory=True)
+    kfold = KFold(n_splits=10, shuffle=True, random_state=None)
+    fold_value = 1
 
-        model = FaceMaskClassification()
+    num_epochs = 10
+    opt_func = torch.optim.Adam
+    lr = 0.001
 
-        num_epochs = 30
-        opt_func = torch.optim.Adam
-        lr = 0.001
+    model_valaccuracy = []
 
-        # train the model
-        #history = fit(num_epochs, lr, model, train_dl, val_dl, opt_func)
+for training_id, validation_id in kfold.split(train_data):
+      model = FaceMaskClassification()
+      print("Fold Number:", fold_value)
 
-        # To restore a model:
-        model = FaceMaskClassification()
-        model.load_state_dict(torch.load("./finalized_model.sav"), strict=False)
+      training_data = Subset(train_data, training_id)
+      val_data = Subset(train_data, validation_id)
+      print(f"Length of Train Data : {len(training_data)}")
+      print(f"Length of Validation Data : {len(val_data)}")
 
-        # run the model on test
-        print('\nEvaluation:')
-        test(model, test_dl)
+      #load the train and validation into batches.
+      training_dl = DataLoader(training_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
+      val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
 
-    elif request == "no":
-        # prepare sample dataset
-        sample_dataset = ImageFolder(sample_dir, transform=transforms.Compose([
-            transforms.Resize((150, 150)), transforms.ToTensor()
-        ]))
+      #train and return model with its validation accuracy then append to the list
+      model_data=fit(num_epochs, lr, model, training_dl, val_dl, opt_func,fold_value)
+      model_valaccuracy.append(model_data)
+      # run the model on test
+      print('\nEvaluation for trained model part 2 fold:', fold_value)
 
-        sample_dl = DataLoader(sample_dataset, len(sample_dataset), num_workers=4, pin_memory=True)
+      # slav modify test function
+      test(model_data[1], val_dl)
+      fold_value+=1
 
-        # To restore a model:
-        model = FaceMaskClassification()
-        model.load_state_dict(torch.load("./finalized_model.sav"),
-                              strict=False)
+#load the train and test into batches.
+training_dl = DataLoader(train_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
+test_dl = DataLoader(test_data, batch_size, num_workers=4, pin_memory=True)
+modeldata=fit(num_epochs, lr, FaceMaskClassification(), training_dl, test_dl, opt_func,0)
 
-        # run the model on sample
-        test(model, sample_dl)
+# save trained model:
+torch.save(modeldata[1].state_dict(),r"C:\Users\Axel\Desktop\newwine\comp 472\project\COMP472_Project_P2\TrainedPart2_model.sav")
+
+# run the trained part2 model on test
+print('\nTest Evaluation part 2:')
+test(modeldata[1], test_dl)
+
+# prepare sample dataset
+sample_dataset = ImageFolder(sample_dir, transform=transforms.Compose([
+    transforms.Resize((150, 150)), transforms.ToTensor()
+]))
+
+sample_dl = DataLoader(sample_dataset, len(sample_dataset), num_workers=4, pin_memory=True)
+
+# To restore trained part2 model model:
+model = FaceMaskClassification()
+model.load_state_dict(torch.load(".\TrainedPart2_model.sav"),
+                      strict=False)
+
+# run the model on sample
+test(model, sample_dl)
+
+# run old model on 4 classes data with k-fold so we use part1 saved model as based model, do k-fold then average the results?
+# run new model on 8 classes with k-fold
+
+# To restore part1 model:
+
+fold_value = 1
+
+# train and test part 1 directory
+data_dir = "C:/Users/Axe/Desktop/newwine/comp 472/project/COMP472_Project/dataset"
+
+dataset = ImageFolder(data_dir, transform=transforms.Compose([
+    transforms.Resize((150, 150)), transforms.ToTensor()
+]))
+
+# The image label set according to the class index in data.classes.
+print("Follwing classes are there : \n", dataset.classes)
+
+# output:
+# Follwing classes are there :
+# ['cloth_mask', 'n95_mask', 'no_mask', 'surgical_mask']
+
+train_data, test_data = random_split(dataset, [train_size, test_size])
+print(f"Length of Train+validation Data : {len(train_data)}")
+print(f"Length of test Data : {len(test_data)}")
+
+# load the test into batches.
+test_dl = DataLoader(test_data, batch_size * 2, num_workers=4, pin_memory=True)
+
+training_dl = DataLoader(training_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
+val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
+
+# k-fold validion for part 1 model
+for training_id, validation_id in kfold.split(train_data):
+    model = torch.load(".\finalized_model.sav")
+    print("Fold Number:", fold_value)
+
+    training_data = Subset(train_data, training_id)
+    val_data = Subset(train_data, validation_id)
+    print(f"Length of Train Data : {len(training_data)}")
+    print(f"Length of Validation Data : {len(val_data)}")
+
+    # load the train and validation into batches.
+    training_dl = DataLoader(training_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
+    val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
+
+    # train and return model with its validation accuracy then append to the list
+    model_data = fit(num_epochs, lr, model, training_dl, val_dl, opt_func, fold_value)
+    # run the model on test
+    print('\nEvaluation for trained model part 1 fold:',fold_value)
+    test(modeldata[1], val_dl)
+    fold_value += 1
+
+    # run the trained part1 model on test
+    print('\nTest Evaluation part 1:')
+    test(modeldata[1], test_dl)
+
