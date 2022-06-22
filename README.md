@@ -32,6 +32,8 @@ torch.manual_seed(42)
 ## Dataset
 The Moodle submission only contains the sample dataset with 100 images (25 images per catergory). You can get the full dataset from this repository in the 'dataset' folder, which contains over 1600 images.
 
+To study the bias of the AI, we have split our dataset into two groups. For gender, we have male and female, while race is split between pale skin and dark skin.
+
 
 ## Content of Submission
 ```
