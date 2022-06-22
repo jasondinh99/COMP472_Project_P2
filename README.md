@@ -55,6 +55,61 @@ root
 |	└───surgical_mask
 │	|	400 images
 |	|
+└─── categorized-dataset               		complete dataset split up into races and genders
+│	Image_References.txt		link references for the dataset
+|	|
+|	└───dark
+|	|	└───cloth_dark
+│	|	|	52 images
+|	|	|
+|	|	└───n95_dark
+|	│	|	53 images
+|	|	|
+|	|	└───no_dark
+|	│	|	94 images
+|	|	|
+|	|	└───surgical_dark
+|	│	|	25 images
+|	|
+|	└───female
+|	|	└───cloth_female
+│	|	|	236 images
+|	|	|
+|	|	└───n95_female
+|	│	|	210 images
+|	|	|
+|	|	└───no_female
+|	│	|	226 images
+|	|	|
+|	|	└───surgical_female
+|	│	|	253 images
+|	|
+|	└───male
+|	|	└───cloth_male
+│	|	|	165 images
+|	|	|
+|	|	└───n95_male
+|	│	|	199 images
+|	|	|
+|	|	└───no_male
+|	│	|	194 images
+|	|	|
+|	|	└───surgical_male
+|	│	|	147 images
+|	|
+|	└───pale
+|	|	└───cloth_pale
+│	|	|	349 images
+|	|	|
+|	|	└───n95_pale
+|	│	|	356 images
+|	|	|
+|	|	└───no_pale
+|	│	|	326 images
+|	|	|
+|	|	└───surgical_pale
+|	│	|	375 images
+|	|
 └───sample-dataset			a subset of size 100 of the full dataset 
 │	Image_References.txt		link references for the dataset
 |	└───cloth_mask
