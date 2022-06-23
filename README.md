@@ -29,6 +29,13 @@ Currently, we specified a manual_seed(42) in line 2 of main.py. This is to make 
 torch.manual_seed(42)
 ```
 
+Our saved trained model in part 2 only works with 
+```
+(20): Linear(in_features=512, out_features=4, bias=True). But our saved trained model in part 1 only works with  
+(20): Linear(in_features=512, out_features=6, bias=True)
+```
+
+
 ## Dataset
 The Moodle submission only contains the sample dataset with 100 images (25 images per catergory). You can get the full dataset from this repository in the 'dataset' folder, which contains over 1600 images.
 
