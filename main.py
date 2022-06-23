@@ -234,43 +234,47 @@ def test(model, test_dl, number_ofclasses):
 
 
 # bias results
-def test_without_bias(model, batchsize):
+def test_without_bias(model, batchsize, option):
     print('\t--- 4 tests within each subgroup (male/female/dark/pale) to avoid biases that arent related to masks')
+    
+    if (option == 0):
+        mask_male_dir = "./categorized-dataset/male"
+        mask_female_dir = "./categorized-dataset/female"
+        mask_dark_dir = "./categorized-dataset/dark"
+        mask_pale_dir = "./categorized-dataset/pale"
+    elif (option == 1):
+        mask_male_dir = "./sample-categorized-dataset/male"
+        mask_female_dir = "./sample-categorized-dataset/female"
+        mask_dark_dir = "./sample-categorized-dataset/dark"
+        mask_pale_dir = "./sample-categorized-dataset/pale"
 
-    # male
-    mask_male_dir = "./categorized-dataset/male"
+    
+    print('### MALE ###')
     male_dataset = ImageFolder(mask_male_dir, transform=transforms.Compose([
         transforms.Resize((150, 150)), transforms.ToTensor()
     ]))
     male_test_dl = DataLoader(male_dataset, batchsize, num_workers=4, pin_memory=True)  # batch size is 64
-    print('### MALE ###')
     test(model, male_test_dl, len(male_dataset.classes))
 
-    # female
-    mask_female_dir = "./categorized-dataset/female"
+    print('### FEMALE ###')
     female_dataset = ImageFolder(mask_female_dir, transform=transforms.Compose([
         transforms.Resize((150, 150)), transforms.ToTensor()
     ]))
     female_test_dl = DataLoader(female_dataset, batchsize, num_workers=4, pin_memory=True)
-    print('### FEMALE ###')
     test(model, female_test_dl, len(female_dataset.classes))
 
-    # dark
-    mask_dark_dir = "./categorized-dataset/dark"
+    print('### DARK ###')
     dark_dataset = ImageFolder(mask_dark_dir, transform=transforms.Compose([
         transforms.Resize((150, 150)), transforms.ToTensor()
     ]))
     dark_test_dl = DataLoader(dark_dataset, batchsize, num_workers=4, pin_memory=True)
-    print('### DARK ###')
     test(model, dark_test_dl, len(dark_dataset.classes))
 
-    # pale
-    mask_pale_dir = "./categorized-dataset/pale"
+    print('### PALE ###')
     pale_dataset = ImageFolder(mask_pale_dir, transform=transforms.Compose([
         transforms.Resize((150, 150)), transforms.ToTensor()
     ]))
     pale_test_dl = DataLoader(pale_dataset, batchsize, num_workers=4, pin_memory=True)
-    print('### PALE ###')
     test(model, pale_test_dl, len(pale_dataset.classes))
 
 
@@ -278,7 +282,7 @@ if __name__ == "__main__":
     # train and test directory
     data_dir = "./dataset"
 
-    request = input('do you want to train the base model')
+    request = input('Do you want to train the base model (yes/no): ')
     # Preparing the Dataset :
     # To prepare a dataset from such a structure, PyTorch provides ImageFolder class which makes the task easy for us
     # to prepare the dataset.
@@ -292,8 +296,6 @@ if __name__ == "__main__":
     ]))
 
     if request == 'yes':
-
-
         # The image label set according to the class index in data.classes.
         print("Follwing classes are there : \n", dataset.classes)
 
@@ -357,27 +359,19 @@ if __name__ == "__main__":
 
 
 
-        #jason
-        test_without_bias(model, 64)
+        # run the model on categorized dataset
+        test_without_bias(model, 64, 0)
 
     elif request == "no":
         # sample directory
         sample_dir = "./sample-dataset"
-
-        #sample category male female pale dark
-        sample_categor_dir = "./sample-categorized-dataset"
 
         # prepare sample datasets
         sample_dataset = ImageFolder(sample_dir, transform=transforms.Compose([
             transforms.Resize((150, 150)), transforms.ToTensor()
         ]))
 
-        sample_categor_dataset = ImageFolder(sample_categor_dir, transform=transforms.Compose([
-            transforms.Resize((150, 150)), transforms.ToTensor()
-        ]))
-
         sample_dl = DataLoader(sample_dataset, 64, num_workers=4, pin_memory=True)
-        sample_categor_dl = DataLoader(sample_categor_dataset, 64, num_workers=4, pin_memory=True)
 
         # To restore trained part2 model model:
         model = FaceMaskClassification()
@@ -389,6 +383,6 @@ if __name__ == "__main__":
         test(model, sample_dl, len(dataset.classes))
 
         # run the model on sample category
-        test_without_bias(model, 64)
+        test_without_bias(model, 64, 0)
 
 
