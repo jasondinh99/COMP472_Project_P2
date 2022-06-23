@@ -21,7 +21,7 @@ class ImageClassificationBase(nn.Module):
         images, labels = batch
         out = self(images)  # Generate predictions
         loss = F.cross_entropy(out, labels)  # Calculate loss
-        return loss,
+        return loss
 
     def validation_step(self, batch):
         images, labels = batch
@@ -38,8 +38,8 @@ class ImageClassificationBase(nn.Module):
         return {'val_loss': epoch_loss.item(), 'val_acc': epoch_acc.item()}
 
     def epoch_end(self, epoch, result):
-        print("Epoch [{}],train_acc: {:.4f}, train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
-            epoch, result['train_acc'], result['train_loss'], result['val_loss'], result['val_acc']))
+        print("Epoch [{}], train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
+            epoch, result['train_loss'], result['val_loss'], result['val_acc']))
 
 
 # CNN Model For Classification:
@@ -71,7 +71,7 @@ class FaceMaskClassification(ImageClassificationBase):
             nn.ReLU(),
             nn.Linear(1024, 512),
             nn.ReLU(),
-            nn.Linear(512, 8)
+            nn.Linear(512, 4)
         )
 
     def forward(self, xb):
@@ -101,8 +101,9 @@ def fit(epochs, lr, model, train_loader, val_loader, opt_func, fold_value):
 
         model.train()
         train_losses = []
-        train_acc = []
+
         for batch in train_loader:
+            # batch[1]=torch.LongTensor(list(map(lambda x:x-1,batch[1].tolist())))
             loss = model.training_step(batch)
             train_losses.append(loss)
             loss.backward()
@@ -112,7 +113,7 @@ def fit(epochs, lr, model, train_loader, val_loader, opt_func, fold_value):
         # validation data evaluation
         result = evaluate(model, val_loader)
         result['train_loss'] = torch.stack(train_losses).mean().item()
-        result['train_acc'] = evaluate(model, train_loader)['val_acc']
+        #         result['train_acc'] = evaluate(model,train_loader)['val_acc']
         model.epoch_end(epoch, result)
         history.append(result)
         #         if abs(result['val_acc']-previous_valaccuracy)<0.001:
@@ -130,7 +131,7 @@ def fit(epochs, lr, model, train_loader, val_loader, opt_func, fold_value):
 
 
 # used to print predicted labels and evaluation such as confusion matrix and f1-score
-def test(model, test_dl):
+def test(model, test_dl, number_ofclasses):
     list_labels = []  # list of labels (actual class values of images)
     list_preds = []  # list of predictions (nn's guesses)
 
@@ -182,25 +183,25 @@ def test(model, test_dl):
     fp = 0  # False Positive
     tp = 0  # True Positive
     tn = 0  # True Negative
-    for c in range(4):  # calculating the above values from the cf_matrix
+    for c in range(number_ofclasses):  # calculating the above values from the cf_matrix
         tp += cf_matrix[c][c]
-        for r in range(4):
+        for r in range(number_ofclasses):
             if r != c:
                 fp += cf_matrix[r][c]
-        for i in range(4):
+        for i in range(number_ofclasses):
             if i != c:
                 fn += cf_matrix[c][i]
 
-    for c in range(4):  # calculating the above values from the cf_matrix
+    for c in range(number_ofclasses):  # calculating the above values from the cf_matrix
         fn = 0  # False Negative
         fp = 0  # False Positive
         tp = 0  # True Positive
 
         tp += cf_matrix[c][c]
-        for r in range(4):
+        for r in range(number_ofclasses):
             if r != c:
                 fp += cf_matrix[r][c]
-        for i in range(4):
+        for i in range(number_ofclasses):
             if i != c:
                 fn += cf_matrix[c][i]
 
@@ -232,15 +233,52 @@ def test(model, test_dl):
     print('F1_score: ', score)
 
 
+# bias results
+def test_without_bias(model, batchsize):
+    print('\t--- 4 tests within each subgroup (male/female/dark/pale) to avoid biases that arent related to masks')
+
+    # male
+    mask_male_dir = "./categorized-dataset/male"
+    male_dataset = ImageFolder(mask_male_dir, transform=transforms.Compose([
+        transforms.Resize((150, 150)), transforms.ToTensor()
+    ]))
+    male_test_dl = DataLoader(male_dataset, batchsize, num_workers=4, pin_memory=True)  # batch size is 64
+    print('### MALE ###')
+    test(model, male_test_dl, len(male_dataset.classes))
+
+    # female
+    mask_female_dir = "./categorized-dataset/female"
+    female_dataset = ImageFolder(mask_female_dir, transform=transforms.Compose([
+        transforms.Resize((150, 150)), transforms.ToTensor()
+    ]))
+    female_test_dl = DataLoader(female_dataset, batchsize, num_workers=4, pin_memory=True)
+    print('### FEMALE ###')
+    test(model, female_test_dl, len(female_dataset.classes))
+
+    # dark
+    mask_dark_dir = "./categorized-dataset/dark"
+    dark_dataset = ImageFolder(mask_dark_dir, transform=transforms.Compose([
+        transforms.Resize((150, 150)), transforms.ToTensor()
+    ]))
+    dark_test_dl = DataLoader(dark_dataset, batchsize, num_workers=4, pin_memory=True)
+    print('### DARK ###')
+    test(model, dark_test_dl, len(dark_dataset.classes))
+
+    # pale
+    mask_pale_dir = "./categorized-dataset/pale"
+    pale_dataset = ImageFolder(mask_pale_dir, transform=transforms.Compose([
+        transforms.Resize((150, 150)), transforms.ToTensor()
+    ]))
+    pale_test_dl = DataLoader(pale_dataset, batchsize, num_workers=4, pin_memory=True)
+    print('### PALE ###')
+    test(model, pale_test_dl, len(pale_dataset.classes))
+
+
 if __name__ == "__main__":
     # train and test directory
-    data_dir = ".\dataset"
-    # sample directory
-    sample_dir = ".\sample-dataset"
+    data_dir = "./dataset"
 
-    #     request = input('do you want to train the base model')
-
-    #     if request == 'yes':
+    request = input('do you want to train the base model')
     # Preparing the Dataset :
     # To prepare a dataset from such a structure, PyTorch provides ImageFolder class which makes the task easy for us
     # to prepare the dataset.
@@ -253,138 +291,104 @@ if __name__ == "__main__":
         transforms.Resize((150, 150)), transforms.ToTensor()
     ]))
 
-    # The image label set according to the class index in data.classes.
-    print("Follwing classes are there : \n", dataset.classes)
+    if request == 'yes':
 
-    # output:
-    # Follwing classes are there :
-    # ['cloth_mask', 'n95_mask', 'no_mask', 'surgical_mask']
 
-    # Splitting Data and Prepare Batches:
-    batch_size = 128
-    val_size = 246
-    test_size = 400
-    train_size = len(dataset) - test_size
+        # The image label set according to the class index in data.classes.
+        print("Follwing classes are there : \n", dataset.classes)
 
-    train_data, test_data = random_split(dataset, [train_size, test_size])
-    print(f"Length of Train+validation Data : {len(train_data)}")
-    print(f"Length of test Data : {len(test_data)}")
+        # output:
+        # Follwing classes are there :
+        # ['cloth_mask', 'n95_mask', 'no_mask', 'surgical_mask']
 
-    # load the test into batches.
-    test_dl = DataLoader(test_data, batch_size * 2, num_workers=4, pin_memory=True)
+        # Splitting Data and Prepare Batches:
+        batch_size = 64
+        val_size = 246
+        test_size = 400
+        train_size = len(dataset) - test_size
 
-    kfold = KFold(n_splits=10, shuffle=True, random_state=None)
-    fold_value = 1
+        train_data, test_data = random_split(dataset, [train_size, test_size])
+        print(f"Length of Train+validation Data : {len(train_data)}")
+        print(f"Length of test Data : {len(test_data)}")
 
-    num_epochs = 10
-    opt_func = torch.optim.Adam
-    lr = 0.001
+        # load the test into batches.
+        test_dl = DataLoader(test_data, batch_size, num_workers=4, pin_memory=True)
 
-    model_valaccuracy = []
+        kfold = KFold(n_splits=10, shuffle=True, random_state=None)
+        fold_value = 1
 
-for training_id, validation_id in kfold.split(train_data):
-      model = FaceMaskClassification()
-      print("Fold Number:", fold_value)
+        num_epochs = 10
+        opt_func = torch.optim.Adam
+        lr = 0.001
 
-      training_data = Subset(train_data, training_id)
-      val_data = Subset(train_data, validation_id)
-      print(f"Length of Train Data : {len(training_data)}")
-      print(f"Length of Validation Data : {len(val_data)}")
+        for training_id, validation_id in kfold.split(train_data):
+            model = FaceMaskClassification()
+            print("Fold Number:", fold_value)
 
-      #load the train and validation into batches.
-      training_dl = DataLoader(training_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
-      val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
+            training_data = Subset(train_data, training_id)
+            val_data = Subset(train_data, validation_id)
+            print(f"Length of Train Data : {len(training_data)}")
+            print(f"Length of Validation Data : {len(val_data)}")
 
-      #train and return model with its validation accuracy then append to the list
-      model_data=fit(num_epochs, lr, model, training_dl, val_dl, opt_func,fold_value)
-      model_valaccuracy.append(model_data)
-      # run the model on test
-      print('\nEvaluation for trained model part 2 fold:', fold_value)
+            # load the train and validation into batches.
+            training_dl = DataLoader(training_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
+            val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
 
-      # slav modify test function
-      test(model_data[1], val_dl)
-      fold_value+=1
+            # train and return model with its validation accuracy then append to the list
+            model_data = fit(num_epochs, lr, model, training_dl, val_dl, opt_func, fold_value)
+            # run the model on test
+            print('\nEvaluation for trained model part 2 fold:', fold_value)
+            test(model_data[1], val_dl, len(dataset.classes))
+            fold_value += 1
 
-#load the train and test into batches.
-training_dl = DataLoader(train_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
-test_dl = DataLoader(test_data, batch_size, num_workers=4, pin_memory=True)
-modeldata=fit(num_epochs, lr, FaceMaskClassification(), training_dl, test_dl, opt_func,0)
+        modeldata = fit(num_epochs, lr, FaceMaskClassification(), training_dl, test_dl, opt_func, 0)
 
-# save trained model:
-torch.save(modeldata[1].state_dict(),r"C:\Users\Axel\Desktop\newwine\comp 472\project\COMP472_Project_P2\TrainedPart2_model.sav")
+        # save trained model:
+        torch.save(modeldata[1].state_dict(),
+                   "./TrainedPart2_model.sav")
 
-# run the trained part2 model on test
-print('\nTest Evaluation part 2:')
-test(modeldata[1], test_dl)
 
-# prepare sample dataset
-sample_dataset = ImageFolder(sample_dir, transform=transforms.Compose([
-    transforms.Resize((150, 150)), transforms.ToTensor()
-]))
+        print('\nTest Evaluation part 2:')
+        model = FaceMaskClassification()
+        model.load_state_dict(
+            torch.load("./TrainedPart2_model.sav"),
+            strict=False)
+        test(model, test_dl, len(dataset.classes))
 
-sample_dl = DataLoader(sample_dataset, len(sample_dataset), num_workers=4, pin_memory=True)
 
-# To restore trained part2 model model:
-model = FaceMaskClassification()
-model.load_state_dict(torch.load(".\TrainedPart2_model.sav"),
-                      strict=False)
 
-# run the model on sample
-test(model, sample_dl)
+        #jason
+        test_without_bias(model, 64)
 
-# run old model on 4 classes data with k-fold so we use part1 saved model as based model, do k-fold then average the results?
-# run new model on 8 classes with k-fold
+    elif request == "no":
+        # sample directory
+        sample_dir = "./sample-dataset"
 
-# To restore part1 model:
+        #sample category male female pale dark
+        sample_categor_dir = "./sample-categorized-dataset"
 
-fold_value = 1
+        # prepare sample datasets
+        sample_dataset = ImageFolder(sample_dir, transform=transforms.Compose([
+            transforms.Resize((150, 150)), transforms.ToTensor()
+        ]))
 
-# train and test part 1 directory
-data_dir = "C:/Users/Axe/Desktop/newwine/comp 472/project/COMP472_Project/dataset"
+        sample_categor_dataset = ImageFolder(sample_categor_dir, transform=transforms.Compose([
+            transforms.Resize((150, 150)), transforms.ToTensor()
+        ]))
 
-dataset = ImageFolder(data_dir, transform=transforms.Compose([
-    transforms.Resize((150, 150)), transforms.ToTensor()
-]))
+        sample_dl = DataLoader(sample_dataset, 64, num_workers=4, pin_memory=True)
+        sample_categor_dl = DataLoader(sample_categor_dataset, 64, num_workers=4, pin_memory=True)
 
-# The image label set according to the class index in data.classes.
-print("Follwing classes are there : \n", dataset.classes)
+        # To restore trained part2 model model:
+        model = FaceMaskClassification()
+        model.load_state_dict(
+            torch.load("./TrainedPart2_model.sav"),
+            strict=False)
 
-# output:
-# Follwing classes are there :
-# ['cloth_mask', 'n95_mask', 'no_mask', 'surgical_mask']
+        # run the model on sample
+        test(model, sample_dl, len(dataset.classes))
 
-train_data, test_data = random_split(dataset, [train_size, test_size])
-print(f"Length of Train+validation Data : {len(train_data)}")
-print(f"Length of test Data : {len(test_data)}")
+        # run the model on sample category
+        test_without_bias(model, 64)
 
-# load the test into batches.
-test_dl = DataLoader(test_data, batch_size * 2, num_workers=4, pin_memory=True)
-
-training_dl = DataLoader(training_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
-val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
-
-# k-fold validion for part 1 model
-for training_id, validation_id in kfold.split(train_data):
-    model = torch.load(".\finalized_model.sav")
-    print("Fold Number:", fold_value)
-
-    training_data = Subset(train_data, training_id)
-    val_data = Subset(train_data, validation_id)
-    print(f"Length of Train Data : {len(training_data)}")
-    print(f"Length of Validation Data : {len(val_data)}")
-
-    # load the train and validation into batches.
-    training_dl = DataLoader(training_data, batch_size, shuffle=True, num_workers=4, pin_memory=True)
-    val_dl = DataLoader(val_data, batch_size, num_workers=4, pin_memory=True)
-
-    # train and return model with its validation accuracy then append to the list
-    model_data = fit(num_epochs, lr, model, training_dl, val_dl, opt_func, fold_value)
-    # run the model on test
-    print('\nEvaluation for trained model part 1 fold:',fold_value)
-    test(modeldata[1], val_dl)
-    fold_value += 1
-
-    # run the trained part1 model on test
-    print('\nTest Evaluation part 1:')
-    test(modeldata[1], test_dl)
 

@@ -1,0 +1,630 @@
+Fold Number: 1
+Length of Train Data : 1107
+Length of Validation Data : 124
+Epoch [0], train_loss: 1.3817, val_loss: 1.3828, val_acc: 0.2161
+Epoch [1], train_loss: 1.2557, val_loss: 1.1323, val_acc: 0.5302
+Epoch [2], train_loss: 1.0695, val_loss: 0.9516, val_acc: 0.4927
+Epoch [3], train_loss: 1.0482, val_loss: 0.9020, val_acc: 0.5495
+Epoch [4], train_loss: 0.9696, val_loss: 0.9213, val_acc: 0.6214
+Epoch [5], train_loss: 0.9270, val_loss: 1.0150, val_acc: 0.5411
+Epoch [6], train_loss: 0.9222, val_loss: 0.9137, val_acc: 0.5734
+Epoch [7], train_loss: 0.8239, val_loss: 1.0324, val_acc: 0.5333
+Epoch [8], train_loss: 0.7252, val_loss: 0.9790, val_acc: 0.5656
+Epoch [9], train_loss: 0.6258, val_loss: 1.1879, val_acc: 0.5411
+
+Evaluation for trained model part 2 fold: 1
+y_pred:  [1, 3, 3, 3, 0, 1, 0, 1, 2, 1, 2, 2, 0, 1, 2, 0, 2, 1, 1, 1, 3, 0, 0, 2, 2, 2, 3, 1, 2, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0, 0, 1, 3, 1, 1, 1, 2, 1, 1, 1, 2, 3, 1, 3, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 2, 3, 2, 1, 3, 1, 2, 1, 2, 3, 3, 1, 2, 2, 3, 3, 1, 1, 2, 2, 2, 1, 1, 0, 1, 3, 0, 0, 2, 1, 2, 2, 3, 2, 0, 1, 0, 1, 2, 0, 0, 0, 1, 0, 3, 0, 1, 1, 2, 0, 2, 1, 1, 1, 2, 3, 1, 3]
+y_true:  [1, 0, 3, 1, 0, 0, 1, 3, 2, 3, 2, 2, 1, 0, 2, 3, 2, 0, 1, 3, 3, 0, 0, 2, 2, 2, 3, 0, 2, 3, 1, 3, 1, 0, 1, 0, 2, 3, 3, 0, 2, 3, 3, 0, 1, 2, 1, 1, 2, 3, 1, 2, 2, 1, 3, 1, 0, 2, 1, 1, 1, 3, 0, 2, 3, 2, 2, 0, 2, 0, 0, 3, 0, 0, 2, 3, 3, 3, 2, 2, 1, 3, 1, 1, 2, 2, 2, 0, 1, 2, 1, 3, 0, 3, 2, 0, 2, 2, 1, 2, 1, 1, 1, 3, 2, 2, 0, 2, 1, 3, 3, 3, 3, 2, 2, 0, 2, 3, 2, 3, 2, 3, 1, 3]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[ 9 11  1  3]
+ [ 5 17  0  6]
+ [ 4  4 31  0]
+ [ 7 16  0 10]]
+
+CLASS # 0
+Accuracy:  0.75
+Precision:  0.36
+Recall:  0.38
+F1_score:  0.37
+
+CLASS # 1
+Accuracy:  0.66
+Precision:  0.35
+Recall:  0.61
+F1_score:  0.45
+
+CLASS # 2
+Accuracy:  0.93
+Precision:  0.97
+Recall:  0.79
+F1_score:  0.87
+
+CLASS # 3
+Accuracy:  0.74
+Precision:  0.53
+Recall:  0.30
+F1_score:  0.38
+
+
+Total (all classes together):
+Accuracy:  0.5403225806451613
+Precision:  0.5403225806451613
+Recall:  0.5403225806451613
+F1_score:  0.5403225806451613
+Fold Number: 2
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.4520, val_loss: 1.3895, val_acc: 0.1622
+Epoch [1], train_loss: 1.3614, val_loss: 1.2948, val_acc: 0.3824
+Epoch [2], train_loss: 1.2235, val_loss: 1.2563, val_acc: 0.4137
+Epoch [3], train_loss: 1.1236, val_loss: 1.2342, val_acc: 0.4072
+Epoch [4], train_loss: 1.0447, val_loss: 1.2032, val_acc: 0.4476
+Epoch [5], train_loss: 0.9454, val_loss: 1.1296, val_acc: 0.4554
+Epoch [6], train_loss: 0.9280, val_loss: 1.1294, val_acc: 0.4788
+Epoch [7], train_loss: 0.8336, val_loss: 1.1094, val_acc: 0.4944
+Epoch [8], train_loss: 0.7807, val_loss: 1.0840, val_acc: 0.5277
+Epoch [9], train_loss: 0.6977, val_loss: 1.4316, val_acc: 0.4880
+
+Evaluation for trained model part 2 fold: 2
+y_pred:  [1, 3, 3, 2, 1, 3, 1, 1, 1, 0, 1, 0, 0, 0, 3, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 0, 1, 1, 1, 0, 1, 0, 3, 1, 2, 3, 3, 3, 0, 2, 2, 1, 2, 2, 2, 1, 2, 2, 3, 1, 1, 2, 2, 1, 1, 0, 2, 1, 1, 3, 1, 2, 1, 1, 1, 0, 2, 2, 1, 3, 0, 1, 2, 2, 1, 0, 2, 1, 1, 1, 1, 2, 3, 0, 1, 3, 3, 2, 2, 0, 1, 3, 0, 1, 2, 2, 0, 1, 1, 2, 2, 1, 0, 0, 1, 1, 2, 0, 1, 1, 2, 2, 3, 1, 3, 1, 2, 2, 0, 1, 2, 1, 1]
+y_true:  [0, 3, 1, 3, 3, 3, 1, 3, 3, 0, 3, 3, 0, 0, 3, 2, 2, 2, 2, 0, 3, 0, 0, 2, 2, 2, 0, 1, 0, 3, 3, 3, 1, 3, 2, 3, 0, 1, 0, 2, 3, 0, 0, 2, 2, 3, 2, 0, 3, 1, 3, 2, 1, 1, 0, 0, 3, 0, 1, 3, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 0, 3, 2, 0, 3, 3, 2, 1, 3, 3, 3, 0, 3, 2, 1, 3, 0, 2, 2, 3, 2, 3, 0, 2, 2, 2, 0, 3, 3, 2, 1, 3, 0, 0, 0, 1, 2, 3, 3, 3, 2, 2, 0, 1, 3, 1, 2, 2, 3, 0, 0, 1, 3]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[11 12  6  3]
+ [ 0 13  3  4]
+ [ 2  3 26  0]
+ [ 7 20  3 10]]
+
+CLASS # 0
+Accuracy:  0.76
+Precision:  0.55
+Recall:  0.34
+F1_score:  0.42
+
+CLASS # 1
+Accuracy:  0.66
+Precision:  0.27
+Recall:  0.65
+F1_score:  0.38
+
+CLASS # 2
+Accuracy:  0.86
+Precision:  0.68
+Recall:  0.84
+F1_score:  0.75
+
+CLASS # 3
+Accuracy:  0.70
+Precision:  0.59
+Recall:  0.25
+F1_score:  0.35
+
+
+Total (all classes together):
+Accuracy:  0.4878048780487805
+Precision:  0.4878048780487805
+Recall:  0.4878048780487805
+F1_score:  0.4878048780487805
+Fold Number: 3
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.4010, val_loss: 1.3865, val_acc: 0.2209
+Epoch [1], train_loss: 1.3207, val_loss: 1.1559, val_acc: 0.5179
+Epoch [2], train_loss: 1.1504, val_loss: 1.1015, val_acc: 0.3882
+Epoch [3], train_loss: 1.0079, val_loss: 1.1635, val_acc: 0.4391
+Epoch [4], train_loss: 0.9741, val_loss: 1.1186, val_acc: 0.4703
+Epoch [5], train_loss: 0.9010, val_loss: 1.1096, val_acc: 0.4534
+Epoch [6], train_loss: 0.8968, val_loss: 1.0695, val_acc: 0.6020
+Epoch [7], train_loss: 0.8364, val_loss: 1.0064, val_acc: 0.6189
+Epoch [8], train_loss: 0.7933, val_loss: 1.2781, val_acc: 0.6104
+Epoch [9], train_loss: 0.8014, val_loss: 1.0786, val_acc: 0.5602
+
+Evaluation for trained model part 2 fold: 3
+y_pred:  [3, 0, 3, 3, 1, 3, 0, 3, 3, 2, 1, 0, 2, 2, 1, 1, 3, 2, 2, 0, 3, 0, 1, 0, 1, 2, 2, 2, 0, 1, 1, 3, 2, 3, 0, 2, 0, 3, 2, 2, 1, 0, 0, 2, 1, 3, 1, 3, 2, 2, 3, 0, 2, 3, 3, 3, 3, 2, 1, 2, 3, 2, 2, 2, 2, 3, 2, 0, 0, 3, 1, 1, 0, 2, 3, 1, 3, 3, 3, 1, 0, 3, 2, 0, 2, 3, 0, 3, 1, 3, 0, 1, 3, 3, 2, 0, 3, 1, 0, 3, 1, 0, 3, 1, 0, 3, 3, 3, 3, 0, 0, 3, 1, 3, 0, 2, 3, 1, 2, 1, 1, 3, 2]
+y_true:  [3, 0, 0, 0, 2, 3, 1, 0, 1, 2, 1, 1, 2, 2, 1, 3, 1, 2, 2, 0, 3, 2, 3, 0, 1, 2, 2, 2, 0, 3, 3, 1, 2, 3, 1, 2, 1, 1, 2, 0, 1, 0, 0, 0, 1, 3, 0, 1, 2, 2, 1, 2, 2, 3, 1, 1, 3, 2, 2, 2, 1, 2, 2, 2, 0, 1, 2, 0, 1, 3, 2, 1, 3, 2, 1, 1, 3, 0, 1, 3, 0, 3, 2, 0, 2, 3, 0, 2, 1, 1, 2, 1, 0, 3, 2, 0, 0, 3, 0, 2, 1, 0, 0, 3, 0, 1, 0, 3, 3, 3, 2, 0, 3, 1, 1, 2, 3, 1, 3, 1, 1, 3, 2]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[14  1  3  9]
+ [ 6 13  0 15]
+ [ 4  3 26  2]
+ [ 2  8  1 16]]
+
+CLASS # 0
+Accuracy:  0.80
+Precision:  0.54
+Recall:  0.52
+F1_score:  0.53
+
+CLASS # 1
+Accuracy:  0.73
+Precision:  0.52
+Recall:  0.38
+F1_score:  0.44
+
+CLASS # 2
+Accuracy:  0.89
+Precision:  0.87
+Recall:  0.74
+F1_score:  0.80
+
+CLASS # 3
+Accuracy:  0.70
+Precision:  0.38
+Recall:  0.59
+F1_score:  0.46
+
+
+Total (all classes together):
+Accuracy:  0.5609756097560976
+Precision:  0.5609756097560976
+Recall:  0.5609756097560976
+F1_score:  0.5609756097560976
+Fold Number: 4
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.4208, val_loss: 1.3532, val_acc: 0.2176
+Epoch [1], train_loss: 1.2237, val_loss: 1.0779, val_acc: 0.4547
+Epoch [2], train_loss: 1.0215, val_loss: 0.9542, val_acc: 0.5674
+Epoch [3], train_loss: 0.9257, val_loss: 0.8960, val_acc: 0.6033
+Epoch [4], train_loss: 0.8682, val_loss: 0.8886, val_acc: 0.6182
+Epoch [5], train_loss: 0.8391, val_loss: 0.9184, val_acc: 0.6261
+Epoch [6], train_loss: 0.8332, val_loss: 0.9703, val_acc: 0.5589
+Epoch [7], train_loss: 0.8169, val_loss: 0.9513, val_acc: 0.5935
+Epoch [8], train_loss: 0.7407, val_loss: 1.0676, val_acc: 0.5759
+Epoch [9], train_loss: 0.6780, val_loss: 0.9493, val_acc: 0.5941
+
+Evaluation for trained model part 2 fold: 4
+y_pred:  [3, 3, 0, 2, 1, 0, 2, 3, 2, 0, 3, 0, 3, 1, 3, 2, 1, 2, 0, 2, 2, 0, 0, 3, 3, 2, 1, 2, 0, 3, 3, 2, 0, 3, 0, 3, 3, 2, 0, 3, 2, 3, 0, 0, 2, 1, 0, 2, 0, 0, 2, 3, 3, 1, 3, 1, 3, 3, 2, 2, 2, 2, 3, 2, 1, 2, 1, 0, 3, 0, 1, 0, 2, 2, 1, 3, 3, 0, 3, 0, 1, 0, 3, 3, 2, 2, 2, 0, 0, 1, 3, 1, 2, 0, 0, 2, 0, 1, 1, 2, 0, 2, 0, 0, 3, 1, 3, 3, 2, 3, 3, 0, 3, 3, 1, 0, 0, 2, 1, 3, 3, 0, 1]
+y_true:  [0, 3, 0, 2, 0, 0, 2, 1, 2, 3, 1, 0, 3, 0, 3, 2, 3, 0, 1, 2, 2, 1, 0, 3, 3, 2, 1, 0, 0, 3, 1, 2, 0, 3, 0, 1, 1, 2, 1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 0, 3, 2, 0, 1, 1, 1, 3, 0, 0, 2, 2, 2, 2, 0, 2, 1, 2, 3, 0, 3, 1, 1, 0, 2, 2, 1, 3, 3, 1, 1, 1, 3, 1, 3, 3, 2, 2, 1, 2, 1, 0, 1, 3, 2, 0, 0, 2, 0, 3, 3, 2, 3, 2, 0, 0, 3, 1, 3, 1, 2, 0, 3, 0, 1, 2, 1, 3, 1, 2, 1, 3, 3, 2, 1]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[16  3  2  6]
+ [10 10  1 12]
+ [ 3  0 29  1]
+ [ 5  7  0 18]]
+
+CLASS # 0
+Accuracy:  0.76
+Precision:  0.47
+Recall:  0.59
+F1_score:  0.52
+
+CLASS # 1
+Accuracy:  0.73
+Precision:  0.50
+Recall:  0.30
+F1_score:  0.38
+
+CLASS # 2
+Accuracy:  0.94
+Precision:  0.91
+Recall:  0.88
+F1_score:  0.89
+
+CLASS # 3
+Accuracy:  0.75
+Precision:  0.49
+Recall:  0.60
+F1_score:  0.54
+
+
+Total (all classes together):
+Accuracy:  0.5934959349593496
+Precision:  0.5934959349593496
+Recall:  0.5934959349593496
+F1_score:  0.5934959349593496
+Fold Number: 5
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.3965, val_loss: 1.3863, val_acc: 0.2664
+Epoch [1], train_loss: 1.3872, val_loss: 1.3875, val_acc: 0.2195
+Epoch [2], train_loss: 1.3872, val_loss: 1.3862, val_acc: 0.2664
+Epoch [3], train_loss: 1.3862, val_loss: 1.3865, val_acc: 0.2664
+Epoch [4], train_loss: 1.3864, val_loss: 1.3863, val_acc: 0.2664
+Epoch [5], train_loss: 1.3864, val_loss: 1.3866, val_acc: 0.2664
+Epoch [6], train_loss: 1.3860, val_loss: 1.3864, val_acc: 0.2664
+Epoch [7], train_loss: 1.3866, val_loss: 1.3863, val_acc: 0.2664
+Epoch [8], train_loss: 1.3866, val_loss: 1.3864, val_acc: 0.2664
+Epoch [9], train_loss: 1.3860, val_loss: 1.3860, val_acc: 0.2664
+
+Evaluation for trained model part 2 fold: 5
+y_pred:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+y_true:  [1, 0, 0, 0, 2, 2, 2, 0, 3, 1, 3, 1, 3, 0, 3, 3, 0, 3, 1, 2, 3, 2, 0, 1, 0, 2, 2, 2, 0, 2, 3, 3, 0, 2, 2, 2, 1, 3, 2, 1, 3, 2, 2, 1, 1, 2, 1, 0, 1, 1, 3, 1, 0, 2, 2, 3, 2, 0, 0, 3, 0, 1, 1, 2, 3, 2, 1, 2, 0, 0, 3, 0, 3, 1, 3, 0, 3, 0, 0, 1, 3, 1, 2, 2, 2, 2, 1, 0, 0, 0, 0, 1, 0, 3, 0, 3, 0, 2, 1, 2, 1, 2, 1, 2, 1, 0, 1, 0, 3, 2, 1, 1, 1, 1, 3, 2, 1, 3, 2, 3, 1, 0, 3]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[ 0  0 31  0]
+ [ 0  0 32  0]
+ [ 0  0 33  0]
+ [ 0  0 27  0]]
+
+CLASS # 0
+Accuracy:  0.75
+Precision:  nan
+Recall:  0.00
+F1_score:  nan
+
+CLASS # 1
+Accuracy:  0.74
+Precision:  nan
+Recall:  0.00
+F1_score:  nan
+
+CLASS # 2
+Accuracy:  0.27
+Precision:  0.27
+Recall:  1.00
+F1_score:  0.42
+
+CLASS # 3
+Accuracy:  0.78
+Precision:  nan
+Recall:  0.00
+F1_score:  nan
+
+
+Total (all classes together):
+Accuracy:  0.2682926829268293
+Precision:  0.2682926829268293
+Recall:  0.2682926829268293
+F1_score:  0.2682926829268293
+D:\anaconda3True\envs\comp472\lib\site-packages\ipykernel_launcher.py:211: RuntimeWarning: invalid value encountered in longlong_scalars
+Fold Number: 6
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.4078, val_loss: 1.3846, val_acc: 0.2481
+Epoch [1], train_loss: 1.3863, val_loss: 1.3852, val_acc: 0.2481
+Epoch [2], train_loss: 1.3865, val_loss: 1.3875, val_acc: 0.2481
+Epoch [3], train_loss: 1.3863, val_loss: 1.3864, val_acc: 0.2481
+Epoch [4], train_loss: 1.3859, val_loss: 1.3881, val_acc: 0.2481
+Epoch [5], train_loss: 1.3860, val_loss: 1.3882, val_acc: 0.2481
+Epoch [6], train_loss: 1.3865, val_loss: 1.3897, val_acc: 0.2481
+Epoch [7], train_loss: 1.3859, val_loss: 1.3889, val_acc: 0.2481
+Epoch [8], train_loss: 1.3861, val_loss: 1.3882, val_acc: 0.2481
+Epoch [9], train_loss: 1.3862, val_loss: 1.3877, val_acc: 0.2481
+
+Evaluation for trained model part 2 fold: 6
+y_pred:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+y_true:  [1, 1, 0, 3, 2, 1, 3, 0, 2, 2, 1, 3, 0, 3, 3, 1, 1, 3, 3, 1, 2, 2, 0, 0, 2, 2, 2, 2, 1, 1, 1, 0, 1, 0, 3, 1, 3, 2, 1, 2, 3, 2, 3, 2, 1, 1, 2, 0, 2, 2, 2, 1, 0, 1, 1, 3, 2, 2, 2, 2, 0, 3, 2, 0, 2, 3, 0, 1, 1, 1, 2, 1, 2, 0, 1, 3, 3, 1, 0, 0, 1, 1, 0, 2, 3, 3, 1, 0, 2, 0, 0, 1, 3, 3, 3, 0, 2, 3, 2, 3, 2, 1, 1, 1, 1, 0, 1, 1, 3, 1, 1, 3, 1, 2, 1, 3, 3, 0, 1, 1, 0, 0, 0]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[ 0  0 25  0]
+ [ 0  0 40  0]
+ [ 0  0 31  0]
+ [ 0  0 27  0]]
+
+CLASS # 0
+Accuracy:  0.80
+Precision:  nan
+Recall:  0.00
+F1_score:  nan
+
+CLASS # 1
+Accuracy:  0.67
+Precision:  nan
+Recall:  0.00
+F1_score:  nan
+
+CLASS # 2
+Accuracy:  0.25
+Precision:  0.25
+Recall:  1.00
+F1_score:  0.40
+
+CLASS # 3
+Accuracy:  0.78
+Precision:  nan
+Recall:  0.00
+F1_score:  nan
+
+
+Total (all classes together):
+Accuracy:  0.25203252032520324
+Precision:  0.25203252032520324
+Recall:  0.25203252032520324
+F1_score:  0.25203252032520324
+D:\anaconda3True\envs\comp472\lib\site-packages\ipykernel_launcher.py:211: RuntimeWarning: invalid value encountered in longlong_scalars
+Fold Number: 7
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.3613, val_loss: 1.2634, val_acc: 0.4123
+Epoch [1], train_loss: 1.1651, val_loss: 1.1029, val_acc: 0.5049
+Epoch [2], train_loss: 1.0309, val_loss: 1.0304, val_acc: 0.5870
+Epoch [3], train_loss: 0.9556, val_loss: 0.9669, val_acc: 0.6280
+Epoch [4], train_loss: 0.9144, val_loss: 1.1193, val_acc: 0.4873
+Epoch [5], train_loss: 0.9538, val_loss: 1.0297, val_acc: 0.5870
+Epoch [6], train_loss: 0.8758, val_loss: 1.0547, val_acc: 0.4821
+Epoch [7], train_loss: 0.8385, val_loss: 1.0962, val_acc: 0.5948
+Epoch [8], train_loss: 0.7943, val_loss: 1.0840, val_acc: 0.5629
+Epoch [9], train_loss: 0.7537, val_loss: 1.1655, val_acc: 0.5453
+
+Evaluation for trained model part 2 fold: 7
+y_pred:  [3, 3, 2, 2, 3, 3, 2, 3, 0, 3, 3, 2, 2, 2, 2, 0, 1, 2, 0, 3, 3, 3, 0, 2, 0, 1, 3, 0, 1, 1, 0, 2, 3, 2, 2, 3, 2, 1, 0, 2, 3, 3, 2, 0, 3, 0, 1, 1, 2, 1, 1, 3, 0, 3, 1, 0, 3, 3, 2, 1, 3, 1, 1, 2, 3, 0, 3, 3, 1, 0, 3, 0, 2, 2, 0, 1, 0, 0, 0, 1, 0, 2, 2, 3, 3, 1, 0, 1, 3, 3, 3, 0, 3, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 3, 3, 2, 2, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0]
+y_true:  [1, 3, 2, 2, 1, 1, 2, 0, 2, 3, 3, 0, 2, 2, 3, 3, 3, 2, 1, 1, 1, 3, 2, 2, 1, 0, 3, 0, 3, 3, 0, 0, 3, 2, 2, 3, 1, 1, 0, 2, 1, 1, 2, 0, 1, 1, 0, 1, 2, 3, 1, 3, 0, 1, 3, 3, 3, 3, 2, 0, 1, 1, 1, 2, 1, 1, 3, 3, 1, 1, 0, 0, 2, 2, 3, 0, 2, 0, 0, 3, 3, 2, 2, 3, 0, 1, 0, 3, 1, 1, 3, 0, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1, 0, 0, 3, 0, 2, 2, 2, 1, 2, 2, 3, 3, 0, 0, 1, 0, 0, 2, 3, 2, 3]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[20  4  3  5]
+ [ 9  7  1 14]
+ [ 5  0 23  0]
+ [ 7  7  1 17]]
+
+CLASS # 0
+Accuracy:  0.73
+Precision:  0.49
+Recall:  0.62
+F1_score:  0.55
+
+CLASS # 1
+Accuracy:  0.72
+Precision:  0.39
+Recall:  0.23
+F1_score:  0.29
+
+CLASS # 2
+Accuracy:  0.92
+Precision:  0.82
+Recall:  0.82
+F1_score:  0.82
+
+CLASS # 3
+Accuracy:  0.72
+Precision:  0.47
+Recall:  0.53
+F1_score:  0.50
+
+
+Total (all classes together):
+Accuracy:  0.5447154471544715
+Precision:  0.5447154471544715
+Recall:  0.5447154471544715
+F1_score:  0.5447154471544715
+Fold Number: 8
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.4046, val_loss: 1.3879, val_acc: 0.2632
+Epoch [1], train_loss: 1.3865, val_loss: 1.3865, val_acc: 0.2632
+Epoch [2], train_loss: 1.3867, val_loss: 1.3861, val_acc: 0.2632
+Epoch [3], train_loss: 1.3865, val_loss: 1.3862, val_acc: 0.2632
+Epoch [4], train_loss: 1.3862, val_loss: 1.3862, val_acc: 0.2632
+Epoch [5], train_loss: 1.3871, val_loss: 1.3856, val_acc: 0.2782
+Epoch [6], train_loss: 1.3961, val_loss: 1.3883, val_acc: 0.2632
+Epoch [7], train_loss: 1.4049, val_loss: 1.3258, val_acc: 0.4065
+Epoch [8], train_loss: 1.3287, val_loss: 1.0513, val_acc: 0.4873
+Epoch [9], train_loss: 1.0628, val_loss: 0.9901, val_acc: 0.6026
+
+Evaluation for trained model part 2 fold: 8
+y_pred:  [3, 3, 3, 2, 3, 0, 3, 0, 3, 3, 2, 0, 3, 3, 3, 0, 3, 3, 0, 3, 3, 0, 2, 3, 3, 3, 2, 3, 3, 2, 2, 3, 0, 2, 0, 0, 0, 0, 3, 3, 3, 3, 0, 3, 3, 0, 0, 3, 2, 3, 3, 2, 0, 0, 3, 2, 0, 0, 3, 2, 3, 0, 2, 2, 2, 0, 2, 2, 1, 3, 2, 3, 0, 0, 3, 3, 3, 2, 3, 2, 2, 2, 3, 3, 3, 3, 0, 2, 0, 0, 2, 2, 3, 0, 3, 2, 3, 3, 3, 0, 2, 3, 3, 3, 2, 3, 2, 3, 0, 3, 0, 2, 2, 0, 2, 0, 0, 2, 3, 3, 0, 3, 3]
+y_true:  [1, 3, 3, 2, 1, 0, 1, 0, 3, 1, 2, 3, 3, 1, 3, 3, 3, 0, 0, 1, 1, 0, 2, 1, 3, 1, 2, 3, 0, 2, 2, 0, 1, 2, 0, 0, 1, 0, 1, 3, 1, 3, 0, 3, 3, 0, 0, 3, 2, 1, 1, 2, 0, 2, 3, 1, 1, 1, 0, 2, 0, 0, 0, 2, 2, 3, 1, 2, 3, 1, 2, 3, 0, 2, 3, 1, 0, 2, 3, 2, 2, 2, 3, 3, 3, 1, 3, 2, 0, 1, 2, 2, 0, 1, 3, 2, 2, 1, 1, 1, 2, 1, 3, 1, 2, 3, 2, 3, 0, 3, 0, 2, 2, 0, 2, 3, 1, 2, 0, 1, 0, 3, 3]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[18  0  1  8]
+ [ 8  0  2 21]
+ [ 2  0 29  1]
+ [ 5  1  0 27]]
+
+CLASS # 0
+Accuracy:  0.80
+Precision:  0.55
+Recall:  0.67
+F1_score:  0.60
+
+CLASS # 1
+Accuracy:  0.74
+Precision:  0.00
+Recall:  0.00
+F1_score:  nan
+
+CLASS # 2
+D:\anaconda3True\envs\comp472\lib\site-packages\ipykernel_launcher.py:217: RuntimeWarning: invalid value encountered in double_scalars
+Accuracy:  0.95
+Precision:  0.91
+Recall:  0.91
+F1_score:  0.91
+
+CLASS # 3
+Accuracy:  0.71
+Precision:  0.47
+Recall:  0.82
+F1_score:  0.60
+
+
+Total (all classes together):
+Accuracy:  0.6016260162601627
+Precision:  0.6016260162601627
+Recall:  0.6016260162601627
+F1_score:  0.6016260162601627
+Fold Number: 9
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.3936, val_loss: 1.3871, val_acc: 0.2613
+Epoch [1], train_loss: 1.3271, val_loss: 1.2023, val_acc: 0.4977
+Epoch [2], train_loss: 1.1069, val_loss: 1.0483, val_acc: 0.4639
+Epoch [3], train_loss: 0.9918, val_loss: 1.1024, val_acc: 0.5056
+Epoch [4], train_loss: 0.9558, val_loss: 1.0313, val_acc: 0.5297
+Epoch [5], train_loss: 0.8718, val_loss: 0.9900, val_acc: 0.5381
+Epoch [6], train_loss: 0.8712, val_loss: 0.9957, val_acc: 0.5147
+Epoch [7], train_loss: 0.8096, val_loss: 0.9725, val_acc: 0.5395
+Epoch [8], train_loss: 0.7770, val_loss: 1.0434, val_acc: 0.5538
+Epoch [9], train_loss: 0.7121, val_loss: 1.1279, val_acc: 0.5303
+
+Evaluation for trained model part 2 fold: 9
+y_pred:  [1, 1, 2, 2, 2, 2, 2, 3, 2, 1, 1, 3, 1, 3, 3, 2, 0, 3, 1, 0, 1, 2, 2, 3, 3, 3, 2, 1, 1, 0, 1, 1, 3, 0, 3, 2, 0, 2, 2, 1, 1, 3, 1, 1, 3, 3, 2, 0, 0, 2, 2, 1, 3, 2, 3, 1, 3, 1, 0, 1, 2, 2, 3, 2, 1, 0, 2, 2, 0, 2, 2, 1, 3, 1, 1, 0, 3, 2, 0, 1, 2, 1, 2, 2, 0, 0, 2, 3, 3, 1, 2, 0, 0, 2, 3, 3, 3, 2, 1, 1, 0, 2, 2, 2, 0, 0, 3, 3, 2, 1, 0, 3, 3, 1, 3, 3, 0, 3, 2, 3, 1, 1, 0]
+y_true:  [3, 1, 0, 2, 0, 2, 2, 3, 2, 0, 0, 3, 3, 3, 1, 2, 1, 3, 3, 3, 3, 3, 1, 1, 1, 0, 2, 3, 3, 0, 0, 1, 3, 0, 0, 2, 1, 2, 2, 1, 0, 0, 0, 0, 1, 3, 2, 0, 0, 2, 2, 1, 3, 2, 1, 0, 1, 0, 2, 1, 2, 0, 1, 2, 3, 3, 2, 2, 2, 0, 2, 3, 1, 1, 3, 0, 0, 2, 0, 3, 2, 3, 2, 2, 0, 2, 2, 0, 1, 1, 3, 1, 0, 2, 1, 3, 1, 2, 3, 1, 0, 2, 1, 2, 0, 0, 3, 3, 2, 1, 0, 3, 0, 3, 3, 3, 0, 0, 1, 3, 0, 1, 3]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[13  9  4  7]
+ [ 3 10  3 11]
+ [ 3  0 28  0]
+ [ 3 13  2 14]]
+
+CLASS # 0
+Accuracy:  0.76
+Precision:  0.59
+Recall:  0.39
+F1_score:  0.47
+
+CLASS # 1
+Accuracy:  0.68
+Precision:  0.31
+Recall:  0.37
+F1_score:  0.34
+
+CLASS # 2
+Accuracy:  0.90
+Precision:  0.76
+Recall:  0.90
+F1_score:  0.82
+
+CLASS # 3
+Accuracy:  0.71
+Precision:  0.44
+Recall:  0.44
+F1_score:  0.44
+
+
+Total (all classes together):
+Accuracy:  0.5284552845528455
+Precision:  0.5284552845528455
+Recall:  0.5284552845528455
+F1_score:  0.5284552845528455
+Fold Number: 10
+Length of Train Data : 1108
+Length of Validation Data : 123
+Epoch [0], train_loss: 1.3903, val_loss: 1.3637, val_acc: 0.4547
+Epoch [1], train_loss: 1.2602, val_loss: 1.1854, val_acc: 0.4378
+Epoch [2], train_loss: 1.1351, val_loss: 1.0654, val_acc: 0.4743
+Epoch [3], train_loss: 0.9960, val_loss: 1.0139, val_acc: 0.4717
+Epoch [4], train_loss: 0.9333, val_loss: 1.0205, val_acc: 0.5355
+Epoch [5], train_loss: 0.9186, val_loss: 1.0182, val_acc: 0.5602
+Epoch [6], train_loss: 0.8604, val_loss: 1.1586, val_acc: 0.5283
+Epoch [7], train_loss: 0.8219, val_loss: 1.0245, val_acc: 0.5551
+Epoch [8], train_loss: 0.7378, val_loss: 1.0122, val_acc: 0.5212
+Epoch [9], train_loss: 0.7070, val_loss: 1.1982, val_acc: 0.4977
+
+Evaluation for trained model part 2 fold: 10
+y_pred:  [1, 1, 3, 2, 1, 1, 0, 0, 2, 3, 1, 1, 3, 3, 1, 2, 3, 1, 1, 1, 3, 3, 2, 0, 0, 1, 3, 1, 1, 2, 1, 3, 2, 3, 1, 2, 0, 3, 0, 0, 1, 2, 0, 2, 0, 2, 2, 1, 0, 1, 3, 1, 1, 3, 3, 2, 3, 2, 1, 0, 3, 0, 2, 3, 2, 1, 2, 0, 1, 0, 2, 3, 0, 1, 0, 1, 0, 2, 3, 0, 2, 0, 1, 2, 0, 1, 2, 3, 2, 1, 3, 1, 0, 1, 0, 3, 2, 2, 1, 0, 1, 0, 3, 1, 0, 0, 1, 2, 0, 3, 2, 1, 1, 2, 2, 2, 0, 0, 1, 1, 3, 1, 0]
+y_true:  [1, 3, 3, 0, 1, 3, 2, 0, 2, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 3, 3, 3, 2, 0, 3, 1, 1, 0, 1, 2, 0, 3, 2, 3, 0, 2, 1, 3, 2, 1, 3, 2, 3, 0, 1, 2, 2, 1, 3, 1, 0, 0, 3, 0, 1, 2, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 2, 0, 3, 2, 2, 0, 0, 1, 0, 0, 3, 2, 1, 0, 2, 0, 3, 2, 3, 0, 0, 1, 2, 1, 3, 1, 3, 1, 1, 1, 2, 2, 1, 0, 0, 3, 1, 1, 0, 1, 2, 2, 0, 3, 0, 1, 0, 2, 2, 0, 0, 0, 3, 3, 0, 1, 1]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[13 11  8  7]
+ [ 7 18  0  9]
+ [ 3  1 21  0]
+ [ 7  9  0  9]]
+
+CLASS # 0
+Accuracy:  0.65
+Precision:  0.43
+Recall:  0.33
+F1_score:  0.38
+
+CLASS # 1
+Accuracy:  0.70
+Precision:  0.46
+Recall:  0.53
+F1_score:  0.49
+
+CLASS # 2
+Accuracy:  0.90
+Precision:  0.72
+Recall:  0.84
+F1_score:  0.78
+
+CLASS # 3
+Accuracy:  0.74
+Precision:  0.36
+Recall:  0.36
+F1_score:  0.36
+
+
+Total (all classes together):
+Accuracy:  0.4959349593495935
+Precision:  0.4959349593495935
+Recall:  0.4959349593495935
+F1_score:  0.4959349593495935
+
+# modeldata=fit(num_epochs, lr, FaceMaskClassification(), training_dl, test_dl, opt_func,0) output
+Epoch [0], train_loss: 1.3886, val_loss: 1.3727, val_acc: 0.4152
+Epoch [1], train_loss: 1.2813, val_loss: 1.3735, val_acc: 0.3795
+Epoch [2], train_loss: 1.1233, val_loss: 1.1720, val_acc: 0.4308
+Epoch [3], train_loss: 1.0922, val_loss: 1.0338, val_acc: 0.5201
+Epoch [4], train_loss: 0.9792, val_loss: 0.9763, val_acc: 0.5580
+Epoch [5], train_loss: 0.9439, val_loss: 0.9594, val_acc: 0.5625
+Epoch [6], train_loss: 0.8995, val_loss: 0.9677, val_acc: 0.5558
+Epoch [7], train_loss: 0.8361, val_loss: 0.9016, val_acc: 0.6138
+Epoch [8], train_loss: 0.7650, val_loss: 1.0457, val_acc: 0.5692
+Epoch [9], train_loss: 0.7261, val_loss: 0.8595, val_acc: 0.6518
+
+
+Test Evaluation on 20 % data part 2:
+y_pred:  [3, 3, 2, 2, 2, 1, 2, 1, 2, 2, 3, 0, 2, 0, 1, 2, 2, 2, 1, 0, 1, 1, 0, 3, 1, 2, 3, 1, 3, 1, 1, 1, 2, 3, 2, 0, 1, 3, 3, 2, 1, 1, 1, 3, 0, 3, 1, 2, 1, 0, 0, 1, 1, 2, 3, 2, 1, 0, 0, 0, 0, 0, 2, 1, 1, 1, 3, 1, 1, 3, 2, 1, 2, 0, 0, 1, 2, 1, 0, 1, 1, 1, 1, 2, 3, 1, 1, 2, 0, 1, 1, 1, 0, 0, 2, 1, 2, 3, 2, 2, 1, 1, 3, 3, 0, 2, 3, 1, 0, 3, 0, 3, 2, 2, 3, 3, 0, 2, 0, 1, 0, 1, 0, 0, 0, 3, 1, 3, 3, 2, 1, 3, 2, 3, 0, 2, 1, 1, 2, 1, 0, 2, 1, 0, 0, 3, 0, 3, 1, 2, 1, 0, 1, 0, 2, 3, 2, 2, 1, 2, 0, 1, 2, 3, 3, 2, 1, 2, 0, 0, 2, 1, 3, 2, 2, 0, 1, 2, 1, 0, 3, 2, 0, 1, 1, 3, 3, 1, 2, 1, 2, 3, 0, 1, 1, 3, 3, 3, 1, 1, 2, 0, 1, 0, 1, 3, 3, 1, 1, 2, 2, 1, 0, 3, 3, 3, 3, 1, 3, 1, 0, 2, 1, 1, 1, 1, 3, 2, 0, 3, 1, 1, 0, 1, 3, 3, 3, 0, 0, 3, 0, 2, 3, 2, 0, 0, 0, 3, 0, 3, 2, 2, 1, 2, 1, 1, 0, 2, 0, 2, 2, 1, 0, 2, 0, 3, 2, 2, 1, 1, 2, 3, 1, 1, 1, 1, 2, 2, 1, 0, 1, 0, 2, 1, 3, 0, 0, 3, 2, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 1, 0, 0, 3, 2, 3, 3, 1, 0, 2, 0, 1, 2, 2, 2, 2, 3, 2, 2, 2, 1, 1, 2, 0, 0, 0, 3, 2, 1, 1, 0, 3, 0, 2, 1, 0, 1, 3, 2, 2, 3, 3, 2, 3, 2, 0, 1, 2, 2, 0, 1, 2, 0, 3, 0, 3, 2, 0, 3, 1, 0, 2, 2, 3, 1, 1, 1, 3, 3, 1, 0, 1, 1, 0, 3, 1, 2, 2, 3, 1, 0, 0, 2, 2, 0, 2, 1, 1, 3, 1, 1, 3, 3, 1, 0, 0, 2, 1, 2, 3, 1]
+y_true:  [3, 3, 2, 2, 2, 3, 2, 1, 2, 2, 1, 0, 0, 0, 1, 0, 2, 0, 1, 0, 3, 1, 0, 1, 3, 2, 3, 0, 3, 3, 3, 1, 2, 1, 2, 1, 1, 3, 2, 2, 1, 1, 1, 1, 0, 2, 1, 0, 3, 0, 0, 3, 3, 2, 3, 2, 3, 0, 0, 0, 0, 0, 2, 1, 1, 3, 3, 1, 1, 3, 2, 1, 2, 0, 2, 0, 0, 0, 0, 1, 1, 1, 1, 2, 0, 3, 1, 0, 0, 1, 3, 1, 0, 2, 2, 1, 2, 2, 2, 2, 3, 2, 1, 1, 0, 2, 3, 1, 1, 2, 1, 3, 2, 2, 1, 1, 1, 2, 0, 1, 2, 1, 0, 0, 3, 3, 0, 3, 0, 2, 1, 3, 2, 2, 0, 2, 1, 1, 2, 3, 0, 2, 3, 0, 0, 1, 2, 3, 1, 2, 1, 0, 1, 1, 3, 3, 2, 2, 0, 0, 1, 0, 2, 3, 1, 2, 3, 2, 0, 0, 2, 0, 0, 2, 2, 0, 3, 0, 3, 0, 3, 0, 0, 1, 0, 1, 3, 1, 2, 1, 2, 0, 0, 1, 3, 3, 1, 3, 1, 1, 2, 3, 3, 2, 1, 3, 3, 0, 3, 2, 2, 1, 0, 3, 3, 3, 3, 1, 3, 3, 3, 2, 1, 0, 1, 1, 3, 2, 0, 3, 1, 1, 0, 1, 3, 3, 2, 0, 0, 0, 0, 2, 3, 2, 0, 1, 1, 0, 0, 3, 2, 2, 1, 2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2, 3, 3, 2, 2, 1, 1, 2, 3, 1, 1, 1, 0, 0, 2, 2, 0, 0, 0, 2, 0, 3, 2, 0, 0, 2, 3, 3, 2, 3, 3, 3, 1, 3, 3, 0, 0, 2, 0, 3, 2, 3, 3, 1, 3, 2, 0, 3, 2, 2, 2, 2, 1, 2, 2, 0, 1, 0, 2, 0, 0, 0, 0, 2, 0, 1, 0, 3, 0, 3, 1, 3, 1, 0, 2, 2, 1, 3, 2, 1, 2, 0, 3, 2, 1, 0, 0, 2, 0, 3, 0, 3, 2, 2, 1, 3, 1, 2, 0, 1, 3, 1, 1, 1, 3, 1, 0, 1, 0, 0, 1, 0, 2, 0, 3, 3, 0, 0, 2, 2, 3, 0, 1, 0, 3, 3, 3, 3, 3, 1, 0, 0, 2, 3, 2, 0, 1]
+****************************************
+		Confusion Matrix
+****************************************
+Columns are predictions, rows are labels
+
+[[60 20 14 10]
+ [12 68  1 19]
+ [ 9  2 85  6]
+ [12 30  3 49]]
+
+CLASS # 0
+Accuracy:  0.81
+Precision:  0.65
+Recall:  0.58
+F1_score:  0.61
+
+CLASS # 1
+Accuracy:  0.79
+Precision:  0.57
+Recall:  0.68
+F1_score:  0.62
+
+CLASS # 2
+Accuracy:  0.91
+Precision:  0.83
+Recall:  0.83
+F1_score:  0.83
+
+CLASS # 3
+Accuracy:  0.80
+Precision:  0.58
+Recall:  0.52
+F1_score:  0.55
+
+
+Total (all classes together):
+Accuracy:  0.655
+Precision:  0.655
+Recall:  0.655
+F1_score:  0.655
